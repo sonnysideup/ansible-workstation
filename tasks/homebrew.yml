@@ -1,0 +1,37 @@
+---
+- name: Install Homebrew packages
+  homebrew: "name={{ item }}"
+  loop:
+    - circleci
+    - colordiff
+    - git
+    - go
+    - htop
+    - hugo
+    - jq
+    - kubernetes-cli
+    - minikube
+    - stern
+    - tree
+    - tmux
+    - vim
+    - watch
+
+- name: Install Homebrew casks
+  homebrew_cask: "name={{ item }}"
+  loop:
+    - 1password
+    - alfred
+    - dash
+    - docker
+    - iterm2
+    - keybase
+    - firefox
+    - goland
+    - intellij-idea-ce
+    - macdown
+    - ngrok
+    - postman
+    - pycharm-ce
+    - slack
+    - spotify

@@ -1,0 +1,14 @@
+---
+- name: Install Mac App Store CLI
+  homebrew: name=mas state=present
+
+- name: Install Mac App Store applications
+  command: "mas install {{ item.id }}"
+  loop:
+    - { id: 937984704, name: 'Amphetamine' }
+    - { id: 506189836, name: 'Harvest' }
+    - { id: 1475897096, name: 'Jira' }
+    - { id: 540348655, name: 'Monosnap' }
+    - { id: 1447569061, name: 'Pomo Timer' }
+    - { id: 904280696, name: 'Things 3' }
+    - { id: 1147396723, name: 'WhatsApp' }
