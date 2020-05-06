@@ -7,6 +7,7 @@
     - git
     - go
     - htop
+    - helm
     - hub
     - hugo
     - jq
