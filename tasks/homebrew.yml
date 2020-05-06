@@ -7,6 +7,7 @@
     - git
     - go
     - htop
+    - hub
     - hugo
     - jq
     - kubernetes-cli
