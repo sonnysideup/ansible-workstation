@@ -1,9 +1,16 @@
 ---
-- name: Install Mac App Store CLI
+- name: Install MAS CLI
   homebrew: name=mas state=present
 
-- name: Install Mac App Store applications
+- name: List installed MAS apps
+  command: mas list
+  register: mas_list
+  check_mode: false
+  changed_when: false
+
+- name: Install MAS applications
   command: "mas install {{ item.id }}"
+  when: (item.id | string) not in mas_list.stdout
   loop:
     - { id: 937984704, name: 'Amphetamine' }
     - { id: 506189836, name: 'Harvest' }
