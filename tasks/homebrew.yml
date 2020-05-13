@@ -1,19 +1,31 @@
 ---
+- name: Capture Homebrew installation path
+  command: brew --prefix
+  register: brew_prefix
+  changed_when: false
+
+- name: Tap AdoptOpenJDK
+  homebrew_tap: name=adoptopenjdk/openjdk
+
 - name: Install Homebrew packages
   homebrew: "name={{ item }}"
   loop:
     - circleci
     - colordiff
+    - fzf
     - git
     - go
     - htop
     - helm
+    - helm@2
     - hub
     - hugo
     - jq
     - kubernetes-cli
     - minikube
+    - sbt
     - stern
+    - terraform
     - tree
     - tmux
     - vim
@@ -23,6 +35,7 @@
   homebrew_cask: "name={{ item }}"
   loop:
     - 1password
+    - adoptopenjdk8
     - alfred
     - dash
     - docker
@@ -37,3 +50,15 @@
     - pycharm-ce
     - slack
     - spotify
+    - zoomus
+
+- name: Capture Helm v2 installation path
+  command: brew --prefix helm@2
+  register: helm2_install_path
+  changed_when: false
+
+- name: Link Helm v2 binary
+  file:
+    src: "{{ helm2_install_path.stdout }}/bin/helm"
+    dest: "{{ brew_prefix.stdout }}/bin/helm2"
+    state: link

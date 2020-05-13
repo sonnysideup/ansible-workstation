@@ -2,4 +2,7 @@
 - hosts: localhost
   tasks:
     - include_tasks: tasks/homebrew.yml
-    - include_tasks: tasks/mas.yml
+    #- include_tasks: tasks/bash.yml
+    #- include_tasks: tasks/dotfiles.yml
+    #- include_tasks: tasks/mas.yml
+    #- include_tasks: tasks/zsh.yml

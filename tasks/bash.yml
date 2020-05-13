@@ -1,0 +1,20 @@
+---
+- name: Install latest version of Bash
+  homebrew: "name={{ item }}"
+  loop:
+    - bash
+    - bash-completion@2
+
+- name: Ensure Homebrew Bash is whitelisted
+  lineinfile:
+    path: /etc/shells
+    line: "{{ brew_prefix.stdout }}/bin/bash"
+  become: yes
+
+- name: Change default shell to Bash
+  command: chsh -s "{{ brew_prefix.stdout }}/bin/bash"
+
+# NOTE:
+# (1) how can we prevent the command above from running after it's 
+#     already been set?
+# (2) should we apply this to root as well?
