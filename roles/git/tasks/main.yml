@@ -1,0 +1,13 @@
+---
+- name: Install git
+  become: yes
+  apt: name=git
+
+- name: Link configuration files
+  file:
+    src: "~/code/dotfiles/{{ item }}"
+    path: "~/{{ item }}"
+    state: link
+  loop:
+    - .gitconfig
+    - .gitignore
