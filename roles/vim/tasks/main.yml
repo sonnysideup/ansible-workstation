@@ -1,0 +1,24 @@
+---
+- name: Install vim and utilities
+  become: yes
+  apt: "name={{ item }}"
+  loop:
+    - vim
+    - fzf
+
+- name: Create autoload directory
+  file:
+    path: ~/.vim/autoload
+    state: directory
+    recurse: yes
+
+- name: Download plug.vim
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.vim/autoload/plug.vim
+
+- name: Install configuration
+  file:
+    src: ~/code/dotfiles/.vimrc
+    path: ~/.vimrc
+    state: link
