@@ -1,0 +1,10 @@
+---
+- name: Install tmux
+  become: yes
+  apt: name=tmux
+
+- name: Configure tmux
+  file:
+    src: ~/code/dotfiles/.tmux.conf
+    path: ~/.tmux.conf
+    state: link

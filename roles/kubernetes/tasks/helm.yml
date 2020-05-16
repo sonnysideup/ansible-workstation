@@ -1,0 +1,13 @@
+---
+- name: Download helm installer
+  become: yes
+  get_url:
+    url: https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+    dest: /usr/local/bin/get_helm.sh
+    mode: 0700
+
+- name: Install helm
+  become: yes
+  command:
+    cmd: get_helm.sh
+    creates: /usr/local/bin/helm

@@ -1,0 +1,8 @@
+---
+- name: Install basic packages
+  become: yes
+  apt:
+    pkg:
+      - hub
+      - htop
+      - tree

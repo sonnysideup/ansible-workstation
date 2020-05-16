@@ -1,0 +1,23 @@
+---
+- name: Install required packages
+  become: yes
+  apt:
+    pkg:
+      - apt-transport-https
+      - gnupg2
+
+- name: Add apt key
+  become: yes
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+- name: Add apt repository
+  become: yes
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+
+- name: Install kubectl
+  become: yes
+  apt:
+    name: kubectl
+    update_cache: yes
