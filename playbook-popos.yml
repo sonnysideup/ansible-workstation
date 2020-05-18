@@ -2,6 +2,7 @@
 - hosts: localhost
   roles:
     - utilities
+    - settings
     - git
     - vim
     - tmux

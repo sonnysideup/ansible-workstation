@@ -1,0 +1,9 @@
+---
+- name: Get display settings
+  command: gsettings get org.gnome.mutter experimental-features
+  register: exp_features
+  changed_when: false
+
+- name: Set fractional display scaling
+  command: gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
+  when: "'x11-randr-fractional-scaling' not in exp_features.stdout"
