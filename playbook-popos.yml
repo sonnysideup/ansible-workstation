@@ -6,4 +6,5 @@
     - git
     - vim
     - tmux
+    - docker
     - kubernetes
