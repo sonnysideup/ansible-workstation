@@ -1,9 +1,15 @@
 ---
+  # NOTE: used to remap keyboard keys
+- name: Install gnome tweak tool
+  become: yes
+  apt: name=gnome-tweak-tool
+
 - name: Get display settings
   command: gsettings get org.gnome.mutter experimental-features
   register: exp_features
   changed_when: false
 
+  # NOTE: currently setting my display to 150%
 - name: Set fractional display scaling
   command: gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
   when: "'x11-randr-fractional-scaling' not in exp_features.stdout"
