@@ -11,3 +11,12 @@
   command:
     cmd: get_helm.sh
     creates: /usr/local/bin/helm
+
+- name: Helm repo list
+  command: helm repo list
+  register: helm_repo_list
+  changed_when: false
+
+- name: Add stable helm repository
+  command: helm repo add stable https://kubernetes-charts.storage.googleapis.com
+  when: "'stable' not in helm_repo_list.stdout"
