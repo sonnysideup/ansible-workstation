@@ -13,3 +13,20 @@
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     dest: /usr/local/bin/minikube
     mode: '0755'
+
+- name: View minikube config
+  command: minikube config view
+  register: minikube_config
+  changed_when: false
+
+- name: Configure minikube driver
+  command: minikube config set driver kvm2
+  when: "'- driver: kvm2' not in minikube_config.stdout"
+
+- name: Configure minikube cpus
+  command: minikube config set driver kvm2
+  when: "'- cpus: 3' not in minikube_config.stdout"
+
+- name: Configure minikube memory
+  command: minikube config set driver kvm2
+  when: "'- memory: 4096' not in minikube_config.stdout"
