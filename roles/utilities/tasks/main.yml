@@ -5,4 +5,5 @@
     pkg:
       - hub
       - htop
+      - jq
       - tree
