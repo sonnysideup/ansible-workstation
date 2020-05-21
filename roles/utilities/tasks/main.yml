@@ -7,3 +7,5 @@
       - htop
       - jq
       - tree
+
+# TODO: install circleci cli
