@@ -1,0 +1,4 @@
+---
+- name: Install golang-go
+  become: yes
+  apt: name=golang-go
