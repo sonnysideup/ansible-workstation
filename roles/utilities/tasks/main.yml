@@ -7,5 +7,6 @@
       - htop
       - jq
       - tree
+      - xclip
 
 # TODO: install circleci cli
