@@ -3,6 +3,7 @@
   become: yes
   apt:
     pkg:
+      - colordiff
       - hub
       - htop
       - jq
@@ -10,3 +11,10 @@
       - xclip
 
 # TODO: install circleci cli
+#
+- name: Install yh
+  become: yes
+  unarchive:
+    src: https://github.com/andreazorzetto/yh/releases/download/v0.2.1/yh-linux-amd64.zip
+    dest: /usr/local/bin
+    remote_src: yes
